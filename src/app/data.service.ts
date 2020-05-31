@@ -4,7 +4,7 @@ export class DataService{
     public image_base_url;
     public req_tkn;
     public session_ID;
-
+    public displaySpinner = false;
     /**
     * // TODO: Fetch configuration for API
     */

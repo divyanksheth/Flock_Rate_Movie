@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from '../data.service';
 
@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
     public keyword='';
     public movieList=[];
     public showList=[];
@@ -17,9 +17,10 @@ export class HomeComponent {
         searchTerm : new FormControl()
 
     });
-    constructor(private dataService: DataService) {}
+    constructor(public dataService: DataService) {}
 
     onFormSubmit(){
+        this.dataService.displaySpinner = true;
         this.keyword = this.searchForm.get('searchTerm').value;
         if(this.keyword == 'null' || this.keyword.length < 1){
             this.isMovieListFetched = false;
@@ -40,8 +41,13 @@ export class HomeComponent {
                 this.showList = res.results;
                 this.showList = this.showList.slice(0,10);
                 this.isShowListFethed = true;
+                this.dataService.displaySpinner = false;
             }
         );
 
+    }
+
+    ngOnDestroy(){
+        this.dataService.displaySpinner = false;
     }
 }

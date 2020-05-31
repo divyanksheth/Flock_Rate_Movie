@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent implements OnInit{
+export class DetailsComponent implements OnInit, OnDestroy{
     public category; // 0 represents movie , 1 represents show
     public details;
     public id;
@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit{
         private router: Router) {}
 
     ngOnInit(){
-
+        this.dataService.displaySpinner = true;
         this.route.queryParams.subscribe((queryParams: Params) => {
             this.category = Number(queryParams['category']);
         }); 
@@ -35,6 +35,7 @@ export class DetailsComponent implements OnInit{
             .then(res => {
                 this.details = res;
                 this.isDataFetched = true;
+                this.dataService.displaySpinner = false;
             });
         
         if(this.router.url.includes('request_token')){
@@ -78,4 +79,7 @@ export class DetailsComponent implements OnInit{
 
     }
 
+    ngOnDestroy(){
+        this.dataService.displaySpinner = false;
+    }
 }

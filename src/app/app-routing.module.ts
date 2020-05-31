@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'user',  canActivate: [SessionGuard],component: UserComponent },
-  { path: 'help', component: HelpComponent }
-
+  { path: 'help', component: HelpComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

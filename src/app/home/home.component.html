@@ -26,39 +26,29 @@
   <div class="card-body">
       <div class="row">
           <div class="col-auto">
-            <a href="http://localhost:4405/details/27205?category=0">
-            <img src="https://image.tmdb.org/t/p/w185/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg">
-          </a>
+            <img src="https://image.tmdb.org/t/p/w185/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg" alt="image">
           </div>
           <div class="col-auto">
-              <a href="http://localhost:4405/details/603?category=0">
-                <img src="https://image.tmdb.org/t/p/w185/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg">
-              </a>
-                
+                <img src="https://image.tmdb.org/t/p/w185/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" alt="image">
           </div>
           <div class="col-auto">
-              <a href="http://localhost:4405/details/550?category=0">
-                <img src="https://image.tmdb.org/t/p/w185/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg">
-              </a>
-                
-            </div>
-            <div class="col-auto">
-                <a href="http://localhost:4405/details/47158?category=0">
-                  <img src="https://image.tmdb.org/t/p/w185//qz4frsqb9cZE5LLIeXfd8nBWCG2.jpg">
-                </a>
-                  
-              </div>
-              <div class="col-auto">
-                  <a href="http://localhost:4405/details/155?category=0">
-                    <img src="https://image.tmdb.org/t/p/w185//qJ2tW6WMUDux911r6m7haRef0WH.jpg">
-                  </a>
-                    
-                </div>
-          
+                <img src="https://image.tmdb.org/t/p/w185/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg" alt="image">
+          </div>
+          <div class="col-auto">
+                <img src="https://image.tmdb.org/t/p/w185//qz4frsqb9cZE5LLIeXfd8nBWCG2.jpg" alt="image">
+          </div>
+          <div class="col-auto">
+                <img src="https://image.tmdb.org/t/p/w185//qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="image">
+          </div>
       </div>
   </div>
 </div>
 
+<div class="d-flex justify-content-center" *ngIf="dataService.displaySpinner">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 
 <div *ngIf="isMovieListFetched && isShowListFethed">
     <div class='card border-primary'>
