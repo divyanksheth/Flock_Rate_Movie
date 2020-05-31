@@ -1,0 +1,65 @@
+<div *ngIf="movieListFetched && showListFetched">
+        <div class='card border-primary'>
+            <div class='card-header bg-primary text-white'><h5>Movie(s) Rated By User</h5></div>
+            <div class='card-body'>
+              <div class='table-responsive'>
+                <table class='table'
+                       *ngIf='ratedMovieList && ratedMovieList.length > 0'>
+                  <thead>
+                    <tr class="d-flex">
+                      <th class="col-3">Title</th>
+                      <th class="col-6">Overview</th>
+                      <th class="col-2">Release Date</th>
+                      <th class="col-1">Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor='let movie of ratedMovieList' class="d-flex">
+                      <td class="col-3">{{ movie.title }}</td>
+                      <td class="col-6">{{ movie.overview }}</td>
+                      <td class="col-2">{{ movie.release_date }}</td>
+                      <td class="col-1">{{ movie.rating }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div *ngIf='ratedMovieList.length == 0'>
+                    No records found.
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- TV SHOWS list-->
+    <div class='card border-primary'>
+        <div class='card-header bg-primary text-white'><h5>TV Shows(s) Rated By User</h5></div>
+        <div class='card-body'>
+          <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='ratedShowList && ratedShowList.length > 0'>
+              <thead>
+                <tr class="d-flex">
+                  <th class="col-3">Title</th>
+                  <th class="col-6">Overview</th>
+                  <th class="col-2">Release Date</th>
+                  <th class="col-1">Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let show of ratedShowList' class="d-flex">
+                  <td class="col-3">
+                      {{ show.name }}
+                  </td>
+                  <td class="col-6">{{ show.overview }}</td>
+                  <td class="col-2">{{ show.first_air_date }}</td>
+                  <td class="col-1">{{ show.rating }} </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf='ratedShowList.length == 0'>
+              No records found.
+            </div>
+          </div>
+        </div>
+      </div>
+          
+    </div>
+    

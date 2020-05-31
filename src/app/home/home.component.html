@@ -1,0 +1,142 @@
+<div class='card border-primary' >
+    <div class="card-header bg-primary text-white">
+      <h5>
+        Welcome to TMDB
+      </h5>
+    </div>
+    
+    <div class='card-body'>
+      <div class="text-left">
+        Millions of movies &amp; TV shows to discover. Explore now.
+      </div>    
+      <form [formGroup]="searchForm" (ngSubmit)="onFormSubmit()">
+        <div class="form-group">
+          <input type="text" formControlName="searchTerm" class="form-control" id="searchTerm" placeholder="Enter Movie or TV Series name">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+</div>
+
+<div class='card border-primary' *ngIf="!isMovieListFetched && !isShowListFethed" >
+  <div class='card-header  bg-primary text-white'>
+      <h5>Popular Movies</h5>
+  </div>
+  
+  <div class="card-body">
+      <div class="row">
+          <div class="col-auto">
+            <a href="http://localhost:4405/details/27205?category=0">
+            <img src="https://image.tmdb.org/t/p/w185/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg">
+          </a>
+          </div>
+          <div class="col-auto">
+              <a href="http://localhost:4405/details/603?category=0">
+                <img src="https://image.tmdb.org/t/p/w185/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg">
+              </a>
+                
+          </div>
+          <div class="col-auto">
+              <a href="http://localhost:4405/details/550?category=0">
+                <img src="https://image.tmdb.org/t/p/w185/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg">
+              </a>
+                
+            </div>
+            <div class="col-auto">
+                <a href="http://localhost:4405/details/47158?category=0">
+                  <img src="https://image.tmdb.org/t/p/w185//qz4frsqb9cZE5LLIeXfd8nBWCG2.jpg">
+                </a>
+                  
+              </div>
+              <div class="col-auto">
+                  <a href="http://localhost:4405/details/155?category=0">
+                    <img src="https://image.tmdb.org/t/p/w185//qJ2tW6WMUDux911r6m7haRef0WH.jpg">
+                  </a>
+                    
+                </div>
+          
+      </div>
+  </div>
+</div>
+
+
+<div *ngIf="isMovieListFetched && isShowListFethed">
+    <div class='card border-primary'>
+        <div class='card-header bg-primary text-white'><h5>Movie Search result for '{{keyword}}'</h5></div>
+        
+        <div class='card-body'>
+          <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='movieList && movieList.length > 0'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th>Release Date</th>
+                  <th>Popularity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let movie of movieList'>
+                    <td>
+                        <img src='{{ "https://image.tmdb.org/t/p/w92/" + movie.poster_path}}' alt="{{movie.title + ' image'}}">   
+                    </td>
+      
+                  <td>
+                      <a [routerLink]="['/details', movie.id]"
+                      [queryParams]="{category: '0'}">
+                        {{ movie.title }}
+                      </a>
+                  </td>
+                  <td>{{ movie.release_date }}</td>
+                  <td>{{ movie.popularity }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf='movieList.length == 0'>
+                No records found.
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- TV SHOWS search result-->
+<div class='card border-primary'>
+    <div class='card-header  bg-primary text-white'><h5>TV Shows Search result for '{{keyword}}'</h5></div>
+    <div class='card-body'>
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='showList && showList.length > 0'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Release Date</th>
+              <th>Popularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let show of showList'>
+              <td>
+                  <img src='{{ "https://image.tmdb.org/t/p/w92/" + show.poster_path}}' alt="{{show.title + ' image'}}">   
+              </td>
+              <td>
+                <a [routerLink]="['/details', show.id]"
+                [queryParams]="{category: '1'}">
+                  {{ show.name }}
+                </a>
+              </td>
+              <td>{{ show.first_air_date }}</td>
+              <td>{{ show.popularity }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf='showList.length == 0'>
+          No records found.
+        </div>
+      </div>
+    </div>
+  </div>
+      
+</div>
+
