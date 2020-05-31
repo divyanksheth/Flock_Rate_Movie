@@ -53,7 +53,7 @@ export class DetailsComponent implements OnInit, OnDestroy{
     approveClicked(){
         this.dataService.createReqToken().then(res => {
             this.req_tkn = res.request_token;
-            let path = 'http://localhost:4405/details/' + this.id + '?category=' + this.category;
+            let path = 'adoring-lewin-448097.netlify.app/details/' + this.id + '?category=' + this.category;
             
             let url = 'https://www.themoviedb.org/authenticate/'.concat(this.req_tkn).concat('?redirect_to=')
             .concat(path);
