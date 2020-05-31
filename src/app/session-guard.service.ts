@@ -13,7 +13,8 @@ import { DataService } from './data.service';
         } else {
             this.dataService.createReqToken().then(res => {
                 this.req_tkn = res.request_token;
-                let path = 'http://localhost:4405/help/';
+                let path = 'https://adoring-lewin-448097.netlify.app/help/';
+                // let path = 'http://localhost:4405/help/';
                 
                 let url = 'https://www.themoviedb.org/authenticate/'.concat(this.req_tkn).concat('?redirect_to=')
                 .concat(path);
