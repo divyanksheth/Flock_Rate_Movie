@@ -142,5 +142,13 @@ export class DataService{
         return fetch(url).then(res => res.json());
     }
 
+    /**
+    * // TODO: Fetch details of crew member
+    */
+   public getCastDetails(id) {
+        let url = this.base_url.concat('person/').concat(id).concat('?api_key=').concat(this.api_key)
+            .concat('&language=en-US');
+        return fetch(url).then(response => response.json());
+    }
 
 }

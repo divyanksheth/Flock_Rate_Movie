@@ -20,13 +20,13 @@ export class HomeComponent implements OnDestroy {
     constructor(public dataService: DataService) {}
 
     onFormSubmit(){
-        this.dataService.displaySpinner = true;
         this.keyword = this.searchForm.get('searchTerm').value;
         if(this.keyword == 'null' || this.keyword.length < 1){
             this.isMovieListFetched = false;
             this.isShowListFethed = false;
             return;
         }
+        this.dataService.displaySpinner = true;
 
         this.dataService.fetchMovieListForSearch(this.keyword).then(
             res => {

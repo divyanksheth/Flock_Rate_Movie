@@ -17,6 +17,10 @@
                                         <li class="list-group-item"><h6>Description</h6> {{details.last_episode_to_air.overview}}</li>
                                         <li class="list-group-item"><h6>Number Of Episode</h6> {{ details.number_of_episodes }}</li>
                                         <li class="list-group-item"><h6>Number Of Seasons</h6> {{ details.number_of_seasons }}</li>
+                                        <li class="list-group-item"><h6>Created By</h6>
+                                            <a [routerLink]="['/cast',details.created_by[0].id]" > {{ details.created_by[0].name }}</a>
+                                        </li>
+                                        
                                     </ul>
                     </div>
                 </div>

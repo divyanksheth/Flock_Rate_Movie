@@ -10,6 +10,7 @@ import { RouterModule } from '../../node_modules/@angular/router';
 import { SessionGuard } from './session-guard.service';
 import { HelpComponent } from './help.component';
 import { DataService } from './data.service';
+import { CastComponent } from './cast/cast.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DataService } from './data.service';
     HomeComponent,
     UserComponent,
     DetailsComponent,
-    HelpComponent
+    HelpComponent,
+    CastComponent
   ],
   imports: [
     BrowserModule,
