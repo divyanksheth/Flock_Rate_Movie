@@ -21,7 +21,6 @@ export class CastComponent implements OnInit, OnDestroy{
         this.dataService.displaySpinner = true;
         this.dataService.getCastDetails(this.castId).then(
             res => {
-                console.log(res);
                 this.castDetails = res;
                 this.castDetailsFetched = true;
                 this.dataService.displaySpinner = false;
